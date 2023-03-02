@@ -1,7 +1,7 @@
 NAME=traceroute
-SRC=main.c help.c util.c addr.c
+SRC=main.c help.c util.c addr.c socket.c
 OBJ=$(SRC:.c=.o)
-CC=gcc
+CC=gcc -fsanitize=address
 all:$(NAME)
 $(NAME):$(OBJ)
 	$(CC) $(OBJ) -o $(NAME)

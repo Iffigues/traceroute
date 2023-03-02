@@ -1,0 +1,10 @@
+Traceroute is a commonly used network diagnostic tool that allows you to trace the route that packets take from your computer to a destination host. The tool works by sending packets with increasing time-to-live (TTL) values and recording the IP addresses of the routers that respond with ICMP "time exceeded" messages.
+
+To recode traceroute, you can start by writing a program that sends packets with increasing TTL values and records the IP addresses of the routers that respond. Here's a general outline of the steps involved:
+
+Set a variable for the maximum number of hops (TTL values) to try.
+For each TTL value from 1 to the maximum number of hops:
+a. Send a packet to the destination with the TTL value set to the current TTL.
+b. Record the IP address of the router that responds with an ICMP "time exceeded" message.
+c. If the destination is reached (i.e., a packet is received with an ICMP "echo reply" message), stop the traceroute.
+Print out the list of recorded IP addresses in the order they were received.

@@ -9,19 +9,29 @@ int need_help(int argc, char **argv) {
 	return (0);
 }
 
+void ft_run(t_traceroute g) {
+	open_socket(&g);	
+}
+
 int ft_start(char *b) {
-	t_traceroute g;
-	g.addr = "google.com";
-	get_info(&g);
-	printf("%s\n", g.ip);
+	t_traceroute g = get_info(b);
+	if (g.err) {
+		if (g.err == 2)
+			freeaddrinfo(g.res);
+		return 1;
+	}
+	ft_run(g);
+	freeaddrinfo(g.res); 
 	return 0;
 }
 
 int main(int argc, char **argv) {
-	ft_start("google.com");	
 	if (need_help(argc, argv)) {
 		help();
 		return 0;
+	}
+	if (argc == 2) {
+		ft_start(argv[1]);
 	}
 	return (0);
 }

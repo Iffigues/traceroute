@@ -15,6 +15,10 @@
 
 typedef struct	s_traceroute
 {
+	int	ttl;
+	int	ttlTotaux;
+	int	socket;
+	int 	err;
 	size_t	len;
 	int	bridge;
 	struct sockaddr *s;
@@ -28,6 +32,7 @@ typedef struct	s_traceroute
 
 void		help();
 int		ft_strcmp(const char *s1, const char *s2);
-int		get_info(t_traceroute *g);
-
+t_traceroute get_info(char *addr);
+int setSocks(t_traceroute *g);
+int open_socket(t_traceroute *g);
 #endif
